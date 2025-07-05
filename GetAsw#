@@ -1,0 +1,50 @@
+class ToDoList:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task):
+        self.tasks.append(task)
+        print(f"Задача '{task}' добавлена!")
+
+    def remove_task(self, task):
+        if task in self.tasks:
+            self.tasks.remove(task)
+            print(f"Задача '{task}' удалена!")
+        else:
+            print("Такой задачи нет!")
+
+    def show_tasks(self):
+        if self.tasks:
+            print("Список задач:")
+            for i, task in enumerate(self.tasks, 1):
+                print(f"{i}. {task}")
+        else:
+            print("Список пуст!")
+
+def main():
+    todo = ToDoList()
+    while True:
+        print("\nВыберите действие:")
+        print("1. Добавить задачу")
+        print("2. Удалить задачу")
+        print("3. Показать все задачи")
+        print("4. Выйти")
+        
+        choice = input("Ваш выбор: ")
+        
+        if choice == '1':
+            task = input("Введите задачу: ")
+            todo.add_task(task)
+        elif choice == '2':
+            task = input("Введите задачу для удаления: ")
+            todo.remove_task(task)
+        elif choice == '3':
+            todo.show_tasks()
+        elif choice == '4':
+            print("До свидания!")
+            break
+        else:
+            print("Неверный выбор. Попробуйте снова.")
+
+if __name__ == "__main__":
+    main()
